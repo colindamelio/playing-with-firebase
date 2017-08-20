@@ -78,24 +78,33 @@ class App extends Component {
     return (
       <div className="App">
         <PlayListInput onSubmit={this.handleFormSubmit} onChange={this.handleFormChange} />
-        <Panel music={this.state.music} />
-        {/* <div className="panel">
-          {this.state.music.map((item, i) => {
+        <div className="panel">
+
+          {this.state.music.map( item => {
             return (
-              <div className="panel-details" key={item.id}>
-                <button
-                  className="remove"
-                  onClick={() => {this.removeItem(item.id)}}>X</button>
-                <span>{item.artist}</span>
-                <span className="album">{item.album}</span>
-                <span>{item.song}</span>
-              </div>
+              <Panel key={item.id} details={this.state.music} />
             )
           })}
-        </div> */}
+
+        </div>
       </div>
     );
   }
 }
 
 export default App;
+
+/* <div className="panel">
+  {this.state.music.map((item, i) => {
+    return (
+      <div className="panel-details" key={item.id}>
+        <button
+          className="remove"
+          onClick={() => {this.removeItem(item.id)}}>X</button>
+        <span>{item.artist}</span>
+        <span className="album">{item.album}</span>
+        <span>{item.song}</span>
+      </div>
+    )
+  })}
+</div> */
