@@ -81,10 +81,12 @@ class App extends Component {
           {this.state.music.map((item, i) => {
             return (
               <div className="panel-details" key={item.id}>
+                <button
+                  className="remove"
+                  onClick={() => {this.removeItem(item.id)}}>X</button>
                 <span>{item.artist}</span>
                 <span className="album">{item.album}</span>
                 <span>{item.song}</span>
-                <button onClick={() => {this.removeItem(item.id)}}>Remove</button>
               </div>
             )
           })}
