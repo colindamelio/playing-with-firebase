@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
 import PlayListInput from './components/playlistInput.js';
+import Panel from './components/panel.js';
 import './App.css';
 
 class App extends Component {
@@ -77,7 +78,8 @@ class App extends Component {
     return (
       <div className="App">
         <PlayListInput onSubmit={this.handleFormSubmit} onChange={this.handleFormChange} />
-        <div className="panel">
+        <Panel music={this.state.music} />
+        {/* <div className="panel">
           {this.state.music.map((item, i) => {
             return (
               <div className="panel-details" key={item.id}>
@@ -90,7 +92,7 @@ class App extends Component {
               </div>
             )
           })}
-        </div>
+        </div> */}
       </div>
     );
   }
