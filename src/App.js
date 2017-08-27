@@ -14,7 +14,7 @@ class App extends Component {
 			artist: '',
 			album: '',
 			song: '',
-			music: []
+			music: [],
 		};
 
 		this.handleFormChange = this.handleFormChange.bind(this);
