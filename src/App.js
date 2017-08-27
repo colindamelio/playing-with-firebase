@@ -14,7 +14,7 @@ class App extends Component {
 			artist: '',
 			album: '',
 			song: '',
-			music: [],
+			music: []
 		};
 
 		this.handleFormChange = this.handleFormChange.bind(this);
@@ -23,13 +23,13 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-    this.loadingState();
+		this.loadingState();
 		this.handleDataRetreival();
 	}
 
-  loadingState() {
-    setTimeout(() => this.setState({ loading: false }), 1000);
-  }
+	loadingState() {
+		setTimeout(() => this.setState({ loading: false }), 1000);
+	}
 
 	handleDataRetreival() {
 		// takes snapshot of what currently exists in the DB
@@ -86,35 +86,33 @@ class App extends Component {
 		const { loading } = this.state;
 		return !loading
 			? <div>
-          <h1 className="heading">Enter Your Playlist Choices!</h1>
-          <div className="App">
-  					<PlayListInput
-              artist={this.state.artist}
-              album={this.state.album}
-              song={this.state.song}
-  						onSubmit={this.handleFormSubmit}
-  						onChange={this.handleFormChange}
-  					/>
-  					<div className="panel">
-  						<Panel
-                details={this.state.music}
-                removeItem={this.removeItem} />
-  					</div>
-          </div>
+					<h1 className="heading">Enter Your Playlist Choices!</h1>
+					<div className="App">
+						<PlayListInput
+							artist={this.state.artist}
+							album={this.state.album}
+							song={this.state.song}
+							onSubmit={this.handleFormSubmit}
+							onChange={this.handleFormChange}
+						/>
+						<div className="panel">
+							<Panel details={this.state.music} removeItem={this.removeItem} />
+						</div>
+					</div>
 				</div>
 			: null;
 	}
 }
 
 App.propTypes = {
-  loading: PropTypes.bool,
-  music: PropTypes.arrayOf(PropTypes.object),
+	loading: PropTypes.bool,
+	music: PropTypes.arrayOf(PropTypes.object)
 };
 
 App.defaultProps = {
-  arist: '',
-  album: '',
-  song: '',
+	arist: '',
+	album: '',
+	song: ''
 };
 
 export default App;
