@@ -7,20 +7,20 @@ import './App.css';
 
 class App extends Component {
   constructor() {
-  super();
+    super();
 
-  this.state = {
-    loading: true,
-    artist: '',
-    album: '',
-    song: '',
-    music: [],
-  };
+    this.state = {
+      loading: true,
+      artist: '',
+      album: '',
+      song: '',
+      music: [],
+    };
 
-  this.handleFormChange = this.handleFormChange.bind(this);
-  this.handleFormSubmit = this.handleFormSubmit.bind(this);
-  this.removeItem = this.removeItem.bind(this);
-}
+    this.handleFormChange = this.handleFormChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.removeItem = this.removeItem.bind(this);
+  }
 
   componentDidMount() {
     this.loadingState();
@@ -35,7 +35,7 @@ class App extends Component {
     // takes snapshot of what currently exists in the DB
     const itemsRef = firebase.database().ref('items');
 
-		itemsRef.on('value', snapshopt => {
+    itemsRef.on('value', snapshopt => {
       let items = snapshopt.val();
       let updatedState = [];
 
@@ -83,26 +83,25 @@ class App extends Component {
     itemsRef.remove();
   }
 
-	render() {
-		const { loading } = this.state;
-		return !loading
-			? <div>
-					<h1 className="heading">Enter Your Playlist Choices!</h1>
-					<div className="App">
-						<PlayListInput
-							artist={this.state.artist}
-							album={this.state.album}
-							song={this.state.song}
-							onSubmit={this.handleFormSubmit}
-							onChange={this.handleFormChange}
-						/>
-						<div className="panel">
-							<Panel details={this.state.music} removeItem={this.removeItem} />
-						</div>
-					</div>
-				</div>
-			: null;
-	}
+  render() {
+    const { loading } = this.state;
+    return !loading
+      ? <div>
+          <h1 className="heading">Enter Your Playlist Choices!</h1>
+          <div className="App">
+            <PlayListInput
+              artist={this.state.artist}
+              album={this.state.album}
+              song={this.state.song}
+              onSubmit={this.handleFormSubmit}
+              onChange={this.handleFormChange} />
+            <div className="panel">
+              <Panel details={this.state.music} removeItem={this.removeItem} />
+            </div>
+          </div>
+        </div>
+      : null;
+  }
 }
 
 App.propTypes = {
