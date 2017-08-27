@@ -86,20 +86,20 @@ class App extends Component {
 		const { loading } = this.state;
 		return !loading
 			? <div>
-          <h1 className="heading">Enter You Playlist Choices!</h1>
+          <h1 className="heading">Enter Your Playlist Choices!</h1>
           <div className="App">
-					<PlayListInput
-            artist={this.state.artist}
-            album={this.state.album}
-            song={this.state.song}
-						onSubmit={this.handleFormSubmit}
-						onChange={this.handleFormChange}
-					/>
-					<div className="panel">
-						<Panel
-              details={this.state.music}
-              removeItem={this.removeItem} />
-					</div>
+  					<PlayListInput
+              artist={this.state.artist}
+              album={this.state.album}
+              song={this.state.song}
+  						onSubmit={this.handleFormSubmit}
+  						onChange={this.handleFormChange}
+  					/>
+  					<div className="panel">
+  						<Panel
+                details={this.state.music}
+                removeItem={this.removeItem} />
+  					</div>
           </div>
 				</div>
 			: null;
