@@ -62,3 +62,32 @@ form button {
   text-transform: uppercase;
   cursor: pointer;
 }
+
+/*loading state*/
+.loading:empty,
+.loading:empty:after {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.loading:empty {
+  position: relative;
+  font-size: 10px;
+  margin: 120px auto;
+  border-top: 1px solid hsla(120, 40%, 96%, 1);
+  border-right: 1px solid hsla(120, 40%, 96%, 1);
+  border-bottom: 1px solid hsla(120, 40%, 96%, 1);
+  border-left: 1px solid #000000;
+  transform: translateZ(0);
+  animation: loading-rotate 1s infinite linear;
+}
+
+@keyframes loading-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
