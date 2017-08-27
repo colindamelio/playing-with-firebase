@@ -6,21 +6,21 @@ import Panel from './components/panel.js';
 import './App.css';
 
 class App extends Component {
-	constructor() {
-		super();
+  constructor() {
+  super();
 
-		this.state = {
-			loading: true,
-			artist: '',
-			album: '',
-			song: '',
-			music: [],
-		};
+  this.state = {
+    loading: true,
+    artist: '',
+    album: '',
+    song: '',
+    music: [],
+  };
 
-		this.handleFormChange = this.handleFormChange.bind(this);
-		this.handleFormSubmit = this.handleFormSubmit.bind(this);
-		this.removeItem = this.removeItem.bind(this);
-	}
+this.handleFormChange = this.handleFormChange.bind(this);
+this.handleFormSubmit = this.handleFormSubmit.bind(this);
+this.removeItem = this.removeItem.bind(this);
+}
 
 	componentDidMount() {
 		this.loadingState();
