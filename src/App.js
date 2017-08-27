@@ -68,6 +68,7 @@ class App extends Component {
 		};
 
 		itemsRef.push(item);
+
 		this.setState({
 			artist: '',
 			album: '',
@@ -85,6 +86,9 @@ class App extends Component {
 		return !loading
 			? <div className="App">
 					<PlayListInput
+            artist={this.state.artist}
+            album={this.state.album}
+            song={this.state.song}
 						onSubmit={this.handleFormSubmit}
 						onChange={this.handleFormChange}
 					/>
