@@ -17,6 +17,7 @@ class App extends Component {
 
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.removeItem = this.removeItem.bind(this);
 
   }
 
@@ -27,7 +28,6 @@ class App extends Component {
   handleDataRetreival() {
     // takes snapshot of what currently exists in the DB
     const itemsRef = firebase.database().ref('items');
-    console.log('item', itemsRef);
     itemsRef.on('value', (snapshopt) => {
       let items = snapshopt.val();
       let updatedState = [];
@@ -43,15 +43,15 @@ class App extends Component {
 
       this.setState({
         music: updatedState,
-      })
-    })
-  }
+      });
+    });
+  };
 
   handleFormChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
     })
-  }
+  };
 
   handleFormSubmit(e) {
     e.preventDefault();
@@ -61,31 +61,26 @@ class App extends Component {
       album: this.state.album,
       song: this.state.song,
     }
+
     itemsRef.push(item);
     this.setState({
       artist: '',
       album: '',
       song: '',
     })
-  }
+  };
 
   removeItem(itemId) {
     const itemsRef = firebase.database().ref(`items/${itemId}`);
     itemsRef.remove();
-  }
+  };
 
   render() {
     return (
       <div className="App">
         <PlayListInput onSubmit={this.handleFormSubmit} onChange={this.handleFormChange} />
         <div className="panel">
-
-          {this.state.music.map( item => {
-            return (
-              <Panel key={item.id} details={this.state.music} />
-            )
-          })}
-
+          <Panel details={this.state.music} removeItem={this.removeItem}/>
         </div>
       </div>
     );
