@@ -17,70 +17,71 @@ class App extends Component {
     music: [],
   };
 
-this.handleFormChange = this.handleFormChange.bind(this);
-this.handleFormSubmit = this.handleFormSubmit.bind(this);
-this.removeItem = this.removeItem.bind(this);
+  this.handleFormChange = this.handleFormChange.bind(this);
+  this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  this.removeItem = this.removeItem.bind(this);
 }
 
-	componentDidMount() {
-		this.loadingState();
-		this.handleDataRetreival();
-	}
+  componentDidMount() {
+    this.loadingState();
+    this.handleDataRetreival();
+  }
 
-	loadingState() {
-		setTimeout(() => this.setState({ loading: false }), 1000);
-	}
+  loadingState() {
+    setTimeout(() => this.setState({ loading: false }), 1000);
+  }
 
-	handleDataRetreival() {
-		// takes snapshot of what currently exists in the DB
-		const itemsRef = firebase.database().ref('items');
+  handleDataRetreival() {
+    // takes snapshot of what currently exists in the DB
+    const itemsRef = firebase.database().ref('items');
+
 		itemsRef.on('value', snapshopt => {
-			let items = snapshopt.val();
-			let updatedState = [];
+      let items = snapshopt.val();
+      let updatedState = [];
 
-			for (let item in items) {
-				updatedState.push({
-					artist: items[item].artist,
-					album: items[item].album,
-					song: items[item].song,
-					id: item
-				});
-			}
+      for (let item in items) {
+        updatedState.push({
+          artist: items[item].artist,
+          album: items[item].album,
+          song: items[item].song,
+          id: item
+        });
+      }
 
-			this.setState({
-				music: updatedState
-			});
-		});
-	}
+      this.setState({
+        music: updatedState
+      });
+    });
+  }
 
-	handleFormChange(e) {
-		this.setState({
-			[e.target.name]: e.target.value
-		});
-	}
+  handleFormChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
 
-	handleFormSubmit(e) {
-		e.preventDefault();
-		const itemsRef = firebase.database().ref('items');
-		const item = {
-			artist: this.state.artist,
-			album: this.state.album,
-			song: this.state.song
-		};
+  handleFormSubmit(e) {
+    e.preventDefault();
+    const itemsRef = firebase.database().ref('items');
+    const item = {
+      artist: this.state.artist,
+      album: this.state.album,
+      song: this.state.song
+    };
 
-		itemsRef.push(item);
+    itemsRef.push(item);
 
-		this.setState({
-			artist: '',
-			album: '',
-			song: ''
-		});
-	}
+    this.setState({
+      artist: '',
+      album: '',
+      song: ''
+    });
+  }
 
-	removeItem(itemId) {
-		const itemsRef = firebase.database().ref(`items/${itemId}`);
-		itemsRef.remove();
-	}
+  removeItem(itemId) {
+    const itemsRef = firebase.database().ref(`items/${itemId}`);
+    itemsRef.remove();
+  }
 
 	render() {
 		const { loading } = this.state;
