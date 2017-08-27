@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Panel extends Component {
   render() {
@@ -19,6 +20,10 @@ class Panel extends Component {
       </div>
     )
   }
+}
+
+Panel.propTypes = {
+  details: PropTypes.array,
 }
 
 export default Panel;

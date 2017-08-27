@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class PlayListInput extends Component {
   render() {
@@ -14,6 +15,12 @@ class PlayListInput extends Component {
       </form>
     )
   }
+}
+
+PlayListInput.propTypes = {
+  artist: PropTypes.string,
+  album: PropTypes.string,
+  song: PropTypes.string,
 }
 
 export default PlayListInput;

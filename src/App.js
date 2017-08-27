@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import firebase from './firebase.js';
 import PlayListInput from './components/playlistInput.js';
 import Panel from './components/panel.js';
@@ -13,7 +14,7 @@ class App extends Component {
 			artist: '',
 			album: '',
 			song: '',
-			music: []
+			music: [],
 		};
 
 		this.handleFormChange = this.handleFormChange.bind(this);
@@ -101,5 +102,16 @@ class App extends Component {
 			: null;
 	}
 }
+
+App.propTypes = {
+  loading: PropTypes.bool,
+  music: PropTypes.arrayOf(PropTypes.object),
+};
+
+App.defaultProps = {
+  arist: '',
+  album: '',
+  song: '',
+};
 
 export default App;
