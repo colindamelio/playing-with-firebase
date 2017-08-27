@@ -11,6 +11,12 @@ body {
   font-family: sans-serif;
 }
 
+/*heading*/
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 /*Panel*/
 .panel-details {
   max-width: 300px;

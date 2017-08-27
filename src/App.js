@@ -85,7 +85,9 @@ class App extends Component {
 	render() {
 		const { loading } = this.state;
 		return !loading
-			? <div className="App">
+			? <div>
+          <h1 className="heading">Enter You Playlist Choices!</h1>
+          <div className="App">
 					<PlayListInput
             artist={this.state.artist}
             album={this.state.album}
@@ -98,6 +100,7 @@ class App extends Component {
               details={this.state.music}
               removeItem={this.removeItem} />
 					</div>
+          </div>
 				</div>
 			: null;
 	}
